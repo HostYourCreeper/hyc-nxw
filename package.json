@@ -1,0 +1,29 @@
+{
+  "author": "Emilien Kenler <hello@emilienkenler.com> (http://www.emilienkenler.com)",
+  "name": "hyc-nxw",
+  "description": "HostYourCreeper NginX Worker",
+  "version": "0.0.1",
+  "homepage": "http://www.hostyourcreeper.com",
+  "repository": {
+    "type": "git",
+    "url": "gitolite@git.emilienkenler.com:hyc-nxw.git"
+  },
+  "main": "server.js",
+  "dependencies": {
+     "amqp" : "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  },
+  "scripts" : { "start" : "forever start server.js" },
+  "config" : { 
+    "amqp_host" : "localhost",
+    "amqp_user" : "myuser",
+    "amqp_pass" : "mypass",
+    "amqp_vhost" : "/myapp",
+    "amqp_cons_queue" : "myapp-cons",
+    "amqp_prod_queue" : "myapp-prod"
+  }
+}
