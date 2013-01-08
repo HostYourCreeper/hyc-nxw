@@ -86,8 +86,10 @@ var create_vhost = function(data,c)
         "  server_name "+data.domain+" *."+data.domain+";\n"+
         "  access_log /var/log/nginx/access.server0"+data.vm_number+".log;\n"+
         "  location / {\n"+
-        "    proxy_pass http://10.10.10."+data.vm_number+";\n"+
         "    proxy_set_header Host $host;\n"+
+        "    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n"+
+        "    proxy_set_header X-Real-IP $remote_addr;\n"+
+        "    proxy_pass http://10.10.10."+data.vm_number+";\n"+
         "  }\n"+
         "}";
         fs.writeFile("/etc/nginx/sites-enabled/vm"+data.vm_number+".conf", file, function (err) {
