@@ -77,7 +77,7 @@ function error(cmd)
 
 var create_vhost = function(data,c)
 {
-    if(!data.vm_number || !data.domain)
+    if(!data.vm_number || !data.domain || data.domain == '.hycpr.net')
         console.log('['+date()+'] Invalid param');
     else
     {
